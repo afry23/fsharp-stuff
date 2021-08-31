@@ -1,14 +1,5 @@
 open System
 
-let tryParesInt (number:string) =
-  let (success, value) = Int32.TryParse number
-  if success then 
-    if value >= 0 && value <= 10 then
-      Some value 
-    else None
-  else
-    None
-
 let f n arr =
   seq {
     for item in arr do
@@ -37,10 +28,10 @@ let main argv =
           yield -1
         read <- success
     ]
-  let arr = List.filter (fun x -> x >= 0 && x <= 10) items 
-  printfn "%A" arr
+    |> List.filter (fun x -> x >= 0 && x <= 10)
+  printfn "%A" items
   
-  let output = f number arr
+  let output = f number items
   for i in output do
     printfn "%d" i
   0
