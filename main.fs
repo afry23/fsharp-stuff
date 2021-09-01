@@ -3,7 +3,8 @@ open System
 let f arr =
   let foo =
     arr
-    |> List.filter (fun x -> x)
+    |> List.mapi (fun i x -> if i % 2 <> 0 then Some x else None)
+    |> List.choose id
   foo
   
 [<EntryPoint>]
@@ -20,7 +21,6 @@ let main argv =
         read <- success
     ]
     |> List.choose id
-  printfn "%A" list
   
   let output = f list
   for i in output do
